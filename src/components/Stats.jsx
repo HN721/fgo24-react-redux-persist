@@ -1,8 +1,7 @@
-import { useContext } from "react";
-import { TravelContext } from "./travelContext";
+import { useSelector } from "react-redux";
 
 export default function Stats() {
-  const { items } = useContext(TravelContext);
+  const items = useSelector((state) => state.todo.data);
 
   if (!items.length)
     return (

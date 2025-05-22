@@ -1,11 +1,14 @@
-import { useState, useContext } from "react";
+import { useState } from "react";
 import Item from "./Item";
-import { TravelContext } from "./travelContext";
+import { useDispatch, useSelector } from "react-redux";
+import { clearTasks } from "../redux/slice/todos";
 
 export default function PackingList() {
-  const { items, onClearList } = useContext(TravelContext);
+  // const { items, onClearList } = useContext(TravelContext);
   const [sortBy, setSortBy] = useState("input");
-
+  const items = useSelector((state) => state.todo.data);
+  const dispatch = useDispatch();
+  console.log(items);
   let sortedItems;
 
   if (sortBy === "input") sortedItems = items;
@@ -34,7 +37,7 @@ export default function PackingList() {
           <option value="description">Sort by description</option>
           <option value="packed">Sort by packed status</option>
         </select>
-        <button onClick={onClearList}>Clear list</button>
+        <button onClick={dispatch(clearTasks)}>Clear list</button>
       </div>
     </div>
   );

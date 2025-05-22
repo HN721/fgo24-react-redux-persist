@@ -1,6 +1,6 @@
-# React Basic
+# React TravelApp
 
-This repo contains the source code of the React to Todo List Using global state management useContext and how to handle data with context
+This repo contains the source code of the React to Todo List Using global state management Redux and Take data with redux presisit
 
 ## Preview
 

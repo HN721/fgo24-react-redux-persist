@@ -1,10 +1,12 @@
 import { useState, useContext, useRef } from "react";
 import { TravelContext } from "./travelContext";
+import { useDispatch } from "react-redux";
+import { addTask } from "../redux/slice/todos";
 
 export default function Form() {
   const [description, setDescription] = useState("");
   const [quantity, setQuantity] = useState(1);
-  const { onAddItems } = useContext(TravelContext);
+  const dispatch = useDispatch();
   const input = useRef();
   function handleSubmit(e) {
     e.preventDefault();
@@ -17,7 +19,7 @@ export default function Form() {
       id: Date.now(),
     };
 
-    onAddItems(newItem);
+    dispatch(addTask(newItem));
 
     setDescription("");
     setQuantity(1);
